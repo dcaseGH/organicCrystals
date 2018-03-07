@@ -1,0 +1,14 @@
+import numpy as np
+import unittest
+import os
+
+class TestOverlays(unittest.TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_optimisingOverlays(self):
+
+
+if __name__ == '__main__':
+    unittest.main()

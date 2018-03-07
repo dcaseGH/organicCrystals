@@ -1,0 +1,710 @@
+
+ 
+           #####################################################################
+           ##                                                                 ##
+           ##                                                                 ##
+           ##                        CrystalOptimizer                         ##
+           ##                    Version 2.4.5 (Dec 2016)                     ##
+           ##          ---------------------------------------------          ##
+           ##            A program to minimise the total energy of            ##
+           ##             crystals of flexible organic molecules              ##
+           ##               with a minimal number of quantum                  ##
+           ##                       mechanical calls                          ##
+           ##                                                                 ##
+           ##             Centre for Process Systems Engineering              ##
+           ##               Department of Chemical Engineering                ##
+           ##                    Imperial College London                      ##
+           ##                                                                 ##
+           ##           Contact: c.pantelides@imperial.ac.uk                  ##
+           ##                    c.adjiman@imperial.ac.uk                     ##
+           ##                    p.karamertzanis@imperial.ac.uk               ##
+           ##                    andrei.kazantsev@imperial.ac.uk              ##
+           ##                                                                 ##
+           ##           The code contains NR routines which implies           ##
+           ##           that users should have a license.                     ##
+           ##           nrtype.f90,nrutil.f90,nr.f90 have been                ##
+           ##           modified by PK. Do not assume compatibility           ##
+           ##           with your local version.                              ##
+           ##                                                                 ##
+           #####################################################################
+
+
+CrystalOptimizer started at
+Thu 17 Aug 21:39:09 BST 2017
+
+STARTED READING COMMAND LINE ARGUMENTS...
+The crystal structure to be minimised will be read from: starting.res
+This CrystalOptimizer job has the following   8 degrees of freedom:
+  1 O1_C1_C2_C7 for which multipole moment derivatives will also be computed
+  2 H1_O1_C1_C2 for which multipole moment derivatives will also be computed
+  3 C1_C2_C7_N1 for which multipole moment derivatives will also be computed
+  4 C7_N1_C8_C9 for which multipole moment derivatives will also be computed
+  5 H6_N1_C8_C9 for which multipole moment derivatives will also be computed
+  6 F1_C14_C12_C11 for which multipole moment derivatives will also be computed
+  7 H6_N1_C8 for which multipole moment derivatives will also be computed
+  8 H1_O1_C1 for which multipole moment derivatives will also be computed
+There are no constraints.
+FINISHED READING COMMAND LINE ARGUMENTS...
+
+
+STARTED READING INPUT FILE...
+Lattice calculations will use: 30.000 Angstrom cutoff.
+Maximum number of iterations:  200
+Pressure set equal to        0.000 GPa
+This will be a run using the fit potential (default).
+Hydrogen bondlengths will not be foreshortened (default).
+Optimisation tolerance (kJ/mol/deg) for torsional angles:       0.0198968
+Optimisation tolerance (kJ/mol/deg) for bond angles:       0.0198968
+Optimisation tolerance (kJ/mol/A) for bond lengths:       1.1400000
+All quantum mechanical calculations will use: 1500MB of memory.
+Number of processors to be used:  1
+Intramolecular energy computed at level of theory: PBE1PBE/6-31+G(d)
+Other options for GAUSSSIAN calculations --> #IOP(3/32=2)
+Charge density computed at level of theory: PBE1PBE/6-31+G(d)
+Optimal paste will be performed using heavy atoms only (default)
+The specified value for the keyword reuse_hessian is yes.
+This option is available for DMACRYS versions higher than 2.2.0
+For earlier versions of DAMCRYS this funcionallity will cause serious problems....
+new dmacrys format is expected.
+custom_label file "" will be ignored. This is not a custom potential run.
+Timing utility used: /usr/bin/time
+NEIGHBOURS used: /home/cposs/NEIGHCRYS/2.2.1.0/neighcrys.out
+DMACRYS used: /home/cposs/DMACRYS/2.2.1.0/dmacrys.out
+GDMANEIGH used: /home/cposs/bin/gdmaneighcrys
+GDMA used: /home/cposs/bin/gdma2.2/bin/gdma
+GAUSSIAN used: /usr/local/g09_d01/g09
+OPTIMAL PASTE used: /home/cposs/bin/OptimalPasteNonNAG/OptimalPaste
+GEOMTOGAUSS used: /home/cposs/bin/geomtogauss
+GDMA INPUT file used: /home/cposs/CrystalOptimizer/files/dmaSCF.dat
+Molecule definition file used: /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/mol.input
+DMACRYS input file used: /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/dmacrys.mols
+POTENTIAL input file used: /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/pote.dat
+BONDLENGTHS input file used: /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/bondlengths
+"database_use" keyword not specified; LAM databases will be used (default).
+"PCM_use" keyword not specified; PCM correction will not be used (default).
+Outer minimisation will be hot started.
+"start_inv_hes" keyword was not specified.
+                starting Hessian will be unit matrix. 
+Intermolecular energy gradients will be computed with   0.5000 deg torsion perturbations.
+Intermolecular energy gradients will be computed with   0.3500 deg bond angle perturbations.
+Intermolecular energy gradients will be computed with   0.0050 A bond length perturbations.
+Intermolecular energy gradients will be computed using central finite differences
+Multipole moment gradients will be computed using forward finite differences if "+" dofs are specified.
+Multipole moment gradients will be perturbed with   1.0000 deg torsion perturbations.
+Multipole moment gradients will be perturbed with   0.1500 deg bond angle perturbations.
+Multipole moment gradients will be perturbed with   0.0050 A bond length perturbations.
+"molopt_conv" was not defined; BFGS molecular optimisations will be 
+              converged to standard GAUSSIAN tolerances.
+"molhes_conv" was not defined; molecular optimisations using exact Hessian will be 
+              converged to standard GAUSSIAN tolerances.
+Taylor expansion will be updated if any torsion angle changes more than   5.00 deg.
+Taylor expansion will be updated if any bond angle changes more than   1.00 deg.
+Taylor expansion will be updated if any bond length changes more than   0.02 A.
+Maximum change (intramolecular energy) allowed in line search scaled by   2.00.
+Charge density will be updated if any torsion angle changes more than   5.00 deg.
+Charge density will be updated if any bond angle changes more than   1.00 deg.
+Charge density will be updated if any bond length changes more than   0.02 A.
+Maximum change (charge density) allowed in line search scaled by   2.00.
+...FINISHED READING INPUT FILE
+
+STARTED PROCESSING CRYSTAL STRUCTURE FILE...
+bondlengths file was found to contain    9 entries.
+
+The number of symmetry relations in space group (ZERR) in input .res file is   2
+The number of molecules found in the primitive cell (fort.21 file) is   2
+The number of asymmetric units in the primitive unit cell (fort.21 file) is   2
+The number of molecules in the asymmetric unit is   1
+The number of molecules in the asymmetric unit is   1
+
+
+########################################################################
+Coordinates for molecule  1 extracted and geom file created
+... it has   30 atoms.
+
+Connectivity of molecule   1:
+Atom C1 was assigned an atomic mass of   12.01100
+Site    1(C_F1_1____, as input: C1) is bonded to    2(C_F1_2____)
+Site    1(C_F1_1____, as input: C1) is bonded to   19(O_F1_1____)
+Site    1(C_F1_1____, as input: C1) is bonded to   20(O_F1_2____)
+Atom C2 was assigned an atomic mass of   12.01100
+Site    2(C_F1_2____, as input: C2) is bonded to    1(C_F1_1____)
+Site    2(C_F1_2____, as input: C2) is bonded to    3(C_F1_3____)
+Site    2(C_F1_2____, as input: C2) is bonded to    7(C_F1_7____)
+Atom C3 was assigned an atomic mass of   12.01100
+Site    3(C_F1_3____, as input: C3) is bonded to    2(C_F1_2____)
+Site    3(C_F1_3____, as input: C3) is bonded to    4(C_F1_4____)
+Site    3(C_F1_3____, as input: C3) is bonded to   22(H_F1_2____)
+Atom C4 was assigned an atomic mass of   12.01100
+Site    4(C_F1_4____, as input: C4) is bonded to    3(C_F1_3____)
+Site    4(C_F1_4____, as input: C4) is bonded to    5(C_F1_5____)
+Site    4(C_F1_4____, as input: C4) is bonded to   23(H_F1_3____)
+Atom C5 was assigned an atomic mass of   12.01100
+Site    5(C_F1_5____, as input: C5) is bonded to    4(C_F1_4____)
+Site    5(C_F1_5____, as input: C5) is bonded to    6(C_F1_6____)
+Site    5(C_F1_5____, as input: C5) is bonded to   24(H_F1_4____)
+Atom C6 was assigned an atomic mass of   12.01100
+Site    6(C_F1_6____, as input: C6) is bonded to    5(C_F1_5____)
+Site    6(C_F1_6____, as input: C6) is bonded to    7(C_F1_7____)
+Site    6(C_F1_6____, as input: C6) is bonded to   25(H_F1_5____)
+Atom C7 was assigned an atomic mass of   12.01100
+Site    7(C_F1_7____, as input: C7) is bonded to    2(C_F1_2____)
+Site    7(C_F1_7____, as input: C7) is bonded to    6(C_F1_6____)
+Site    7(C_F1_7____, as input: C7) is bonded to   18(N_F1_1____)
+Atom C8 was assigned an atomic mass of   12.01100
+Site    8(C_F1_8____, as input: C8) is bonded to    9(C_F1_9____)
+Site    8(C_F1_8____, as input: C8) is bonded to   13(C_F1_13___)
+Site    8(C_F1_8____, as input: C8) is bonded to   18(N_F1_1____)
+Atom C9 was assigned an atomic mass of   12.01100
+Site    9(C_F1_9____, as input: C9) is bonded to    8(C_F1_8____)
+Site    9(C_F1_9____, as input: C9) is bonded to   10(C_F1_10___)
+Site    9(C_F1_9____, as input: C9) is bonded to   27(H_F1_7____)
+Atom C10 was assigned an atomic mass of   12.01100
+Site   10(C_F1_10___, as input: C10) is bonded to    9(C_F1_9____)
+Site   10(C_F1_10___, as input: C10) is bonded to   11(C_F1_11___)
+Site   10(C_F1_10___, as input: C10) is bonded to   28(H_F1_8____)
+Atom C11 was assigned an atomic mass of   12.01100
+Site   11(C_F1_11___, as input: C11) is bonded to   10(C_F1_10___)
+Site   11(C_F1_11___, as input: C11) is bonded to   12(C_F1_12___)
+Site   11(C_F1_11___, as input: C11) is bonded to   29(H_F1_9____)
+Atom C12 was assigned an atomic mass of   12.01100
+Site   12(C_F1_12___, as input: C12) is bonded to   11(C_F1_11___)
+Site   12(C_F1_12___, as input: C12) is bonded to   13(C_F1_13___)
+Site   12(C_F1_12___, as input: C12) is bonded to   14(C_F1_14___)
+Atom C13 was assigned an atomic mass of   12.01100
+Site   13(C_F1_13___, as input: C13) is bonded to    8(C_F1_8____)
+Site   13(C_F1_13___, as input: C13) is bonded to   12(C_F1_12___)
+Site   13(C_F1_13___, as input: C13) is bonded to   30(H_F1_10___)
+Atom C14 was assigned an atomic mass of   12.01100
+Site   14(C_F1_14___, as input: C14) is bonded to   12(C_F1_12___)
+Site   14(C_F1_14___, as input: C14) is bonded to   15(F_F1_1____)
+Site   14(C_F1_14___, as input: C14) is bonded to   16(F_F1_2____)
+Site   14(C_F1_14___, as input: C14) is bonded to   17(F_F1_3____)
+Atom F1 was assigned an atomic mass of   18.99840
+Site   15(F_F1_1____, as input: F1) is bonded to   14(C_F1_14___)
+Atom F2 was assigned an atomic mass of   18.99840
+Site   16(F_F1_2____, as input: F2) is bonded to   14(C_F1_14___)
+Atom F3 was assigned an atomic mass of   18.99840
+Site   17(F_F1_3____, as input: F3) is bonded to   14(C_F1_14___)
+Atom N1 was assigned an atomic mass of   14.00674
+Site   18(N_F1_1____, as input: N1) is bonded to    7(C_F1_7____)
+Site   18(N_F1_1____, as input: N1) is bonded to    8(C_F1_8____)
+Site   18(N_F1_1____, as input: N1) is bonded to   26(H_F2_6____)
+Atom O1 was assigned an atomic mass of   15.99940
+Site   19(O_F1_1____, as input: O1) is bonded to    1(C_F1_1____)
+Site   19(O_F1_1____, as input: O1) is bonded to   21(H_F2_1____)
+Atom O2 was assigned an atomic mass of   15.99940
+Site   20(O_F1_2____, as input: O2) is bonded to    1(C_F1_1____)
+Atom H1 was assigned an atomic mass of    1.00794
+Site   21(H_F2_1____, as input: H1) is bonded to   19(O_F1_1____)
+Atom H2 was assigned an atomic mass of    1.00794
+Site   22(H_F1_2____, as input: H2) is bonded to    3(C_F1_3____)
+Atom H3 was assigned an atomic mass of    1.00794
+Site   23(H_F1_3____, as input: H3) is bonded to    4(C_F1_4____)
+Atom H4 was assigned an atomic mass of    1.00794
+Site   24(H_F1_4____, as input: H4) is bonded to    5(C_F1_5____)
+Atom H5 was assigned an atomic mass of    1.00794
+Site   25(H_F1_5____, as input: H5) is bonded to    6(C_F1_6____)
+Atom H6 was assigned an atomic mass of    1.00794
+Site   26(H_F2_6____, as input: H6) is bonded to   18(N_F1_1____)
+Atom H7 was assigned an atomic mass of    1.00794
+Site   27(H_F1_7____, as input: H7) is bonded to    9(C_F1_9____)
+Atom H8 was assigned an atomic mass of    1.00794
+Site   28(H_F1_8____, as input: H8) is bonded to   10(C_F1_10___)
+Atom H9 was assigned an atomic mass of    1.00794
+Site   29(H_F1_9____, as input: H9) is bonded to   11(C_F1_11___)
+Atom H10 was assigned an atomic mass of    1.00794
+Site   30(H_F1_10___, as input: H10) is bonded to   13(C_F1_13___)
+
++O1_C1_C2_C7 is a torsion angle of molecule   1
+... defined by the atoms  19(O1)  1(C1)  2(C2)  7(C7)
+
++H1_O1_C1_C2 is a torsion angle of molecule   1
+... defined by the atoms  21(H1) 19(O1)  1(C1)  2(C2)
+
++C1_C2_C7_N1 is a torsion angle of molecule   1
+... defined by the atoms   1(C1)  2(C2)  7(C7) 18(N1)
+
++C7_N1_C8_C9 is a torsion angle of molecule   1
+... defined by the atoms   7(C7) 18(N1)  8(C8)  9(C9)
+
++H6_N1_C8_C9 is a torsion angle of molecule   1
+... defined by the atoms  26(H6) 18(N1)  8(C8)  9(C9)
+
++F1_C14_C12_C11 is a torsion angle of molecule   1
+... defined by the atoms  15(F1) 14(C14) 12(C12) 11(C11)
+
++H6_N1_C8 is a bond angle of molecule   1
+... defined by the atoms  26(H6) 18(N1)  8(C8)
+
++H1_O1_C1 is a bond angle of molecule   1
+... defined by the atoms  21(H1) 19(O1)  1(C1)
+
+Connectivity of atoms for molecule   1
+Atom   1  (C14) has connectivity of 4
+Atom   2   (C2) has connectivity of 3
+Atom   3   (C3) has connectivity of 3
+Atom   4   (C4) has connectivity of 3
+Atom   5   (C5) has connectivity of 3
+Atom   6   (C6) has connectivity of 3
+Atom   7   (C7) has connectivity of 3
+Atom   8   (C8) has connectivity of 3
+Atom   9   (C9) has connectivity of 3
+Atom  10  (C10) has connectivity of 3
+Atom  11  (C11) has connectivity of 3
+Atom  12  (C12) has connectivity of 3
+Atom  13  (C13) has connectivity of 3
+Atom  14   (C1) has connectivity of 3
+Atom  15   (N1) has connectivity of 3
+Atom  16   (O1) has connectivity of 2
+Atom  17   (F3) has connectivity of 1
+Atom  18   (F1) has connectivity of 1
+Atom  19   (F2) has connectivity of 1
+Atom  20   (O2) has connectivity of 1
+Atom  21   (H1) has connectivity of 1
+Atom  22   (H2) has connectivity of 1
+Atom  23   (H3) has connectivity of 1
+Atom  24   (H4) has connectivity of 1
+Atom  25   (H5) has connectivity of 1
+Atom  26   (H6) has connectivity of 1
+Atom  27   (H7) has connectivity of 1
+Atom  28   (H8) has connectivity of 1
+Atom  29   (H9) has connectivity of 1
+Atom  30  (H10) has connectivity of 1
+
+File Zmatrix doesn't exist...
+The automatic proccedure will be followed for the
+generation of the Z-matrix!
+
+
+The molecular formula of molecule    1 is: C14NO2H10F3
+
+The generated Z-matrix of molecule   1 is:
+Atom      Name   Atom      Name   Atom      Name   Atom      Name
+----      ----   ----      ----   ----      ----   ----      ----
+ 14      (C14) 
+ 12      (C12)    14      (C14) 
+ 11      (C11)    12      (C12)    14      (C14) 
+ 10      (C10)    11      (C11)    12      (C12)    14       (C14)
+  9       (C9)    10      (C10)    11      (C11)    12       (C12)
+  8       (C8)     9       (C9)    10      (C10)    11       (C11)
+ 13      (C13)     8       (C8)     9       (C9)    10       (C10)
+ 18       (N1)     8       (C8)     9       (C9)    10       (C10)
+  7       (C7)    18       (N1)     8       (C8)     9        (C9)
+  2       (C2)     7       (C7)    18       (N1)     8        (C8)
+  3       (C3)     2       (C2)     7       (C7)    18        (N1)
+  4       (C4)     3       (C3)     2       (C2)     7        (C7)
+  5       (C5)     4       (C4)     3       (C3)     2        (C2)
+  6       (C6)     5       (C5)     4       (C4)     3        (C3)
+  1       (C1)     2       (C2)     7       (C7)    18        (N1)
+ 19       (O1)     1       (C1)     2       (C2)     7        (C7)
+ 17       (F3)    14      (C14)    12      (C12)    11       (C11)
+ 15       (F1)    14      (C14)    12      (C12)    11       (C11)
+ 16       (F2)    14      (C14)    12      (C12)    11       (C11)
+ 20       (O2)     1       (C1)     2       (C2)     7        (C7)
+ 21       (H1)    19       (O1)     1       (C1)     2        (C2)
+ 22       (H2)     3       (C3)     2       (C2)     7        (C7)
+ 23       (H3)     4       (C4)     3       (C3)     2        (C2)
+ 24       (H4)     5       (C5)     4       (C4)     3        (C3)
+ 25       (H5)     6       (C6)     5       (C5)     4        (C4)
+ 26       (H6)    18       (N1)     8       (C8)     9        (C9)
+ 27       (H7)     9       (C9)    10      (C10)    11       (C11)
+ 28       (H8)    10      (C10)    11      (C11)    12       (C12)
+ 29       (H9)    11      (C11)    12      (C12)    14       (C14)
+ 30      (H10)    13      (C13)     8       (C8)     9        (C9)
+Starting value for flexible torsion +O1_C1_C2_C7 is   175.73 deg
+Starting value for flexible torsion +H1_O1_C1_C2 is   179.13 deg
+Starting value for flexible torsion +C1_C2_C7_N1 is    -0.70 deg
+Starting value for flexible torsion +C7_N1_C8_C9 is    45.47 deg
+Starting value for flexible torsion +H6_N1_C8_C9 is  -128.99 deg
+Starting value for flexible torsion +F1_C14_C12_C11 is   -36.69 deg
+Starting value for flexible bond angle +H6_N1_C8 is   116.92 deg
+Starting value for flexible bond angle +H1_O1_C1 is   105.49 deg
+
+Local axes system for molecule  1
+xaxis defined from site 
+   8 (C_F1_8____, as input C8) to site    9 (C_F1_9____, as input C9)
+yplane defined by sites 
+   8 (C_F1_8____, as input C8)   9 (C_F1_9____, as input C9)  10 (C_F1_10___, as input C10)
+
+Local axes system for atoms in molecule  1
+Local axes system for site    1    (C1) is defined with atoms    2    (C2)  19    (O1)
+Local axes system for site    2    (C2) is defined with atoms    1    (C1)   3    (C3)
+Local axes system for site    3    (C3) is defined with atoms    2    (C2)   4    (C4)
+Local axes system for site    4    (C4) is defined with atoms    3    (C3)   5    (C5)
+Local axes system for site    5    (C5) is defined with atoms    4    (C4)   6    (C6)
+Local axes system for site    6    (C6) is defined with atoms    5    (C5)   7    (C7)
+Local axes system for site    7    (C7) is defined with atoms    2    (C2)   6    (C6)
+Local axes system for site    8    (C8) is defined with atoms    9    (C9)  13   (C13)
+Local axes system for site    9    (C9) is defined with atoms    8    (C8)  10   (C10)
+Local axes system for site   10   (C10) is defined with atoms    9    (C9)  11   (C11)
+Local axes system for site   11   (C11) is defined with atoms   10   (C10)  12   (C12)
+Local axes system for site   12   (C12) is defined with atoms   11   (C11)  13   (C13)
+Local axes system for site   13   (C13) is defined with atoms    8    (C8)  12   (C12)
+Local axes system for site   14   (C14) is defined with atoms   12   (C12)  15    (F1)
+Local axes system for site   15    (F1) is defined with atoms   14   (C14)  12   (C12)
+Local axes system for site   16    (F2) is defined with atoms   14   (C14)  12   (C12)
+Local axes system for site   17    (F3) is defined with atoms   14   (C14)  12   (C12)
+Local axes system for site   18    (N1) is defined with atoms    7    (C7)   8    (C8)
+Local axes system for site   19    (O1) is defined with atoms    1    (C1)  21    (H1)
+Local axes system for site   20    (O2) is defined with atoms    1    (C1)   2    (C2)
+Local axes system for site   21    (H1) is defined with atoms   19    (O1)   1    (C1)
+Local axes system for site   22    (H2) is defined with atoms    3    (C3)   2    (C2)
+Local axes system for site   23    (H3) is defined with atoms    4    (C4)   3    (C3)
+Local axes system for site   24    (H4) is defined with atoms    5    (C5)   4    (C4)
+Local axes system for site   25    (H5) is defined with atoms    6    (C6)   5    (C5)
+Local axes system for site   26    (H6) is defined with atoms   18    (N1)   8    (C8)
+Local axes system for site   27    (H7) is defined with atoms    9    (C9)  10   (C10)
+Local axes system for site   28    (H8) is defined with atoms   10   (C10)  11   (C11)
+Local axes system for site   29    (H9) is defined with atoms   11   (C11)  12   (C12)
+Local axes system for site   30   (H10) is defined with atoms   13   (C13)   8    (C8)
+
+Setting the charge of molecule   1 equal to zero, and the multiplicity equal to one
+
+...FINISHED PROCESSING CRYSTAL STRUCTURE FILE...
+
+
+STARTED PROCESSING MOLECULAR DEFINITION FILE  /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/mol.input ...
+ 
+Processing input for molecule   1
+User specified name for molecule   1 is flufenamicAcid. 
+User specified charge for molecule   1 is   0. 
+User specified gas-phase energy of molecule   1 is -1043.197120 H.
+This value will be used as the reference energy during the minimisation.
+User specified location of database file containing intramolecular LAM for molecule   1 is: 
+/home/dcase/FlufenamicAcid/PBE0correctIntra.dbase
+User specified location of database file containing electrostatic LAM for molecule   1 is: 
+/home/dcase/FlufenamicAcid/PBE0correctElec.dbase
+FINISHED processing input for molecule   1
+
+FINISHED PROCESSING MOLECULAR DEFINITION FILE  /home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/corMast/mol.input ...
+
+Intialising and Checking Compatibility of the Intramolecular Database File
+with Internal Record for Molecule  1.
+
+The specified intramolecular database file exists.
+Checking compatibility of the specified database with internal record.
+
+Number of specified atoms in the intramolecular energy database matches the internal record.
+The molecular charge specified in the intramolecular energy database matches the internal record.
+The specified QM functional in the intramolecular energy database matches the internal record.
+The specified QM basis set in the intramolecular energy database matches the internal record.
+The specified PCM settings in the intramolecular energy database matches the internal record.
+checking for the existence of a Zmatrix file 
+flag
+    
+The Z-matrix specified in the database file matches the one generated internally.
+
+###################################################
+Intramolecular Database File /home/dcase/FlufenamicAcid/PBE0correctIntra.dbase
+is Compatible with Internal Record for Molecule  1.
+###################################################
+
+
+Intialising and Checking Compatibility of the Electrostatic Database File
+with Internal Record for Molecule  1.
+
+The specified electrostatic LAM database file exists.
+Checking compatibility of the specified database with internal record.
+
+Number of specified atoms in the electrostatic lam database matches the internal record.
+The molecular charge specified in the electrostatic lam database matches the internal record.
+The specified QM functional in the electrostatic lam database matches the internal record.
+The specified QM basis set in the electrostatic lam database matches the internal record.
+The specified PCM settings in the electrostatic lam database matches the internal record.
+checking the existence of the Zmatrix file
+ flag F
+The Z-matrix specified in the database file matches the one generated internally.
+The Local Axis System specified in the database file matches the one generated internally.
+The method and perturbations steps for multipole gradient calculation match the internal record.
+The GDMA input file specified in the database matches the internal record.
+The specified flexible degrees of freedom for which multipole derivatives will be computed
+in the electrostatic database match internal record.
+
+###################################################
+Electrostatic LAM Database File /home/dcase/FlufenamicAcid/PBE0correctElec.dbase
+is Compatible with Internal Record for Molecule  1.
+###################################################
+
+
+QM CONSTRAINED OPTIMISATION OF MOLECULE   1
+The intramolecular LAM database will now be searched for suitable entries
+
+No existing intramolecular LAM database entries have been found to be suitable.
+QM calculations will now be performed.
+
+
+Constrained ab initio optimisation of molecule   1 will now be submitted.
+Reading molecular energy from file:  ./act_conf1/act_conf1.log
+The SCF energy is: -1043.19686834
+Gaussian optimisation of molecule   1 finished.
+The molecular energy of molecule   1 is -1043.196868 H
+
+The starting and optimised Z-matrix is as follows:
+        Name(as input)  Old Value -> New Value (A,deg)  Change(A,deg)  Derivative (KJ/mol/A,deg)
+
+         bnd2(C12_C14)    1.50565 ->    1.50263        -0.00302       3.997662218E-01
+
+         bnd3(C11_C12)    1.39772 ->    1.39430        -0.00342       2.399289500E-01
+     ang3(C11_C12_C14)  119.42246 ->  119.31674        -0.10571       4.523276930E-03
+
+         bnd4(C10_C11)    1.39306 ->    1.39200        -0.00106       1.750726717E-02
+     ang4(C10_C11_C12)  118.81169 ->  118.99589         0.18420       5.853211028E-04
+ dih4(C10_C11_C12_C14) -176.75557 -> -177.68338        -0.92781       2.893833153E-03
+
+          bnd5(C9_C10)    1.39378 ->    1.39084        -0.00294       1.932547012E-01
+      ang5(C9_C10_C11)  120.99270 ->  120.68840        -0.30430       3.651762519E-03
+  dih5(C9_C10_C11_C12)   -0.15576 ->   -0.14610         0.00966      -1.226153616E-03
+
+           bnd6(C8_C9)    1.40526 ->    1.40042        -0.00484      -5.139631711E-01
+       ang6(C8_C9_C10)  120.26037 ->  120.26499         0.00462      -3.729597713E-03
+   dih6(C8_C9_C10_C11)   -1.20154 ->   -1.44557        -0.24403       2.213402599E-04
+
+          bnd7(C13_C8)    1.40495 ->    1.39906        -0.00589       3.662442725E-01
+       ang7(C13_C8_C9)  118.68716 ->  119.12537         0.43821       1.369499842E-03
+   dih7(C13_C8_C9_C10)    1.55761 ->    1.87013         0.31252       4.379790599E-03
+
+           bnd8(N1_C8)    1.40171 ->    1.40233         0.00062      -9.042873033E-01
+        ang8(N1_C8_C9)  123.60296 ->  122.15002        -1.45294       2.953353306E-03
+    dih8(N1_C8_C9_C10)  178.01554 ->  177.81000        -0.20553       2.490590393E-04
+
+           bnd9(C7_N1)    1.37868 ->    1.36942        -0.00926      -4.076878871E-01
+        ang9(C7_N1_C8)  129.46746 ->  127.58166        -1.88581      -7.213496950E-03
+    *dih9(C7_N1_C8_C9)   45.46713 ->   45.46707        -0.00006       6.515270041E-02
+
+          bnd10(C2_C7)    1.43028 ->    1.42452        -0.00576      -1.678500324E-01
+       ang10(C2_C7_N1)  119.91463 ->  120.60532         0.69070      -4.300169104E-03
+    dih10(C2_C7_N1_C8) -165.50298 -> -167.86403        -2.36104      -1.044993726E-04
+
+          bnd11(C3_C2)    1.40794 ->    1.40558        -0.00236      -3.054277107E-01
+       ang11(C3_C2_C7)  119.59877 ->  119.64046         0.04170      -1.704355589E-02
+    dih11(C3_C2_C7_N1) -179.68177 -> -179.88526        -0.20349      -1.055045018E-02
+
+          bnd12(C4_C3)    1.38483 ->    1.38270        -0.00213      -3.262709886E-02
+       ang12(C4_C3_C2)  121.61350 ->  121.57993        -0.03358      -1.893359603E-02
+    dih12(C4_C3_C2_C7)    0.55665 ->    0.38388        -0.17277      -2.007766861E-02
+
+          bnd13(C5_C4)    1.40084 ->    1.39966        -0.00118      -1.136332401E-01
+       ang13(C5_C4_C3)  118.70938 ->  118.65727        -0.05212      -1.533123835E-02
+    dih13(C5_C4_C3_C2)    1.03771 ->    0.76662        -0.27109      -2.004001644E-02
+
+          bnd14(C6_C5)    1.38608 ->    1.38324        -0.00284       5.256701928E-01
+       ang14(C6_C5_C4)  121.19243 ->  121.20005         0.00763      -5.988722194E-03
+    dih14(C6_C5_C4_C3)   -1.18754 ->   -0.93106         0.25649      -1.078418872E-02
+
+          bnd15(C1_C2)    1.47101 ->    1.46455        -0.00647      -3.222054155E-01
+       ang15(C1_C2_C7)  120.85619 ->  120.67007        -0.18612      -1.231985020E-02
+   *dih15(C1_C2_C7_N1)   -0.70275 ->   -0.70302        -0.00027      -5.225567569E-02
+
+          bnd16(O1_C1)    1.35430 ->    1.34757        -0.00674       1.955387891E-01
+       ang16(O1_C1_C2)  114.01721 ->  114.07303         0.05582      -5.299595856E-03
+   *dih16(O1_C1_C2_C7)  175.72876 ->  175.72902         0.00026      -4.346120292E-02
+
+         bnd17(F3_C14)    1.35381 ->    1.35081        -0.00299      -2.875171484E-01
+     ang17(F3_C14_C12)  111.51697 ->  111.60989         0.09292       5.250876596E-03
+ dih17(F3_C14_C12_C11)   82.62607 ->   82.64630         0.02023       1.540888863E-03
+
+         bnd18(F1_C14)    1.35235 ->    1.34690        -0.00545       1.374772307E-01
+     ang18(F1_C14_C12)  111.70859 ->  111.96913         0.26054       3.322360636E-03
+*dih18(F1_C14_C12_C11)  -36.68553 ->  -36.68534         0.00019       5.422036888E-03
+
+         bnd19(F2_C14)    1.35149 ->    1.34543        -0.00606       1.256599055E-01
+     ang19(F2_C14_C12)  112.22999 ->  112.40687         0.17688       4.261353135E-03
+ dih19(F2_C14_C12_C11) -157.45151 -> -157.49120        -0.03969      -1.373496945E-03
+
+          bnd20(O2_C1)    1.22916 ->    1.22592        -0.00324       3.792786813E-01
+       ang20(O2_C1_C2)  125.98569 ->  125.78372        -0.20197      -1.278043655E-02
+    dih20(O2_C1_C2_C7)   -4.61887 ->   -4.19176         0.42712       5.368660528E-03
+
+          bnd21(H1_O1)    0.97133 ->    0.97218         0.00085      -6.941700482E-02
+      *ang21(H1_O1_C1)  105.48719 ->  105.48726         0.00007      -7.399106208E-02
+   *dih21(H1_O1_C1_C2)  179.13014 ->  179.13010        -0.00004      -1.171146430E-02
+
+          bnd22(H2_C3)    1.08334 ->    1.08496         0.00162      -1.029544032E-01
+       ang22(H2_C3_C2)  118.11926 ->  118.14275         0.02350      -9.267406110E-04
+    dih22(H2_C3_C2_C7) -179.76235 -> -179.85374        -0.09139      -3.213935871E-04
+
+          bnd23(H3_C4)    1.08449 ->    1.08561         0.00112      -5.087440198E-02
+       ang23(H3_C4_C3)  120.53905 ->  120.56006         0.02101       8.515711378E-04
+    dih23(H3_C4_C3_C2) -179.90220 -> -179.99584        -0.09364       1.669187670E-03
+
+          bnd24(H4_C5)    1.08645 ->    1.08747         0.00102      -1.583847444E-02
+       ang24(H4_C5_C4)  119.93698 ->  119.91949        -0.01749       4.270670493E-04
+    dih24(H4_C5_C4_C3)  178.02015 ->  178.40130         0.38114      -6.306350033E-04
+
+          bnd25(H5_C6)    1.08251 ->    1.08505         0.00254       1.691183184E-01
+       ang25(H5_C6_C5)  119.61203 ->  119.78542         0.17339       1.585601947E-03
+    dih25(H5_C6_C5_C4)  177.73923 ->  178.36978         0.63055       8.211465868E-04
+
+          bnd26(H6_N1)    1.01865 ->    1.01831        -0.00034       5.067643607E-01
+      *ang26(H6_N1_C8)  116.91684 ->  116.91662        -0.00021      -2.064413671E-01
+   *dih26(H6_N1_C8_C9) -128.98732 -> -128.98712         0.00020       8.059172856E-02
+
+          bnd27(H7_C9)    1.08342 ->    1.08625         0.00283       3.077834616E-02
+      ang27(H7_C9_C10)  119.78815 ->  120.21514         0.42698      -2.026669342E-03
+  dih27(H7_C9_C10_C11)  177.17540 ->  177.88334         0.70794       1.715335464E-03
+
+         bnd28(H8_C10)    1.08574 ->    1.08665         0.00092      -6.484878839E-02
+     ang28(H8_C10_C11)  119.76633 ->  119.76938         0.00305       1.839928497E-03
+ dih28(H8_C10_C11_C12)  178.88386 ->  178.74507        -0.13878      -2.302261544E-03
+
+         bnd29(H9_C11)    1.08390 ->    1.08553         0.00163      -3.542306385E-02
+     ang29(H9_C11_C12)  120.23726 ->  120.35322         0.11596      -3.359548977E-04
+ dih29(H9_C11_C12_C14)    3.25661 ->    1.94118        -1.31543      -4.335216965E-03
+
+        bnd30(H10_C13)    1.08453 ->    1.08598         0.00145      -5.293530525E-02
+     ang30(H10_C13_C8)  119.56868 ->  119.44680        -0.12187      -1.597294879E-03
+  dih30(H10_C13_C8_C9) -179.79635 -> -179.83369        -0.03734       1.095095141E-03
+
+PS: One star indicates that the d.o.f. is flexible.
+    Two stars indicate that the d.o.f. is constrained.
+
+INTRAMOLECULAR HESSIAN MATRIX CALCULATION FOR MOLECULE   1
+The intramolecular LAM database will now be searched for suitable entries
+
+No existing intramolecular LAM database entries have been found to be suitable.
+QM calculations will now be performed.
+
+
+Hessian calculation of molecule   1 will now be submitted.
+Hessian calculation of molecule   1 finished.
+Reading molecular energy from file:  ./act_hess1/act_hess1.log
+The SCF energy is: -1043.19677852
+The molecular energy of molecule   1 is -1043.196779 H
+The molecular energy of molecule   1 is     0.896556 kJ/mol
+...     3570  elements of the hessian found in the checkpoint file. Will now be read.
+ The number of lines...(numerical value)          17
+ The number of lines...(character representation)17
+ The number of lines...(character representation)714
+
+Will now attempt to read hessian from checkpoint file.
+All  7056 elements of hessian matrix read ok.
+
+
+The starting and optimised Z-matrix (with Hessian) is as follows:
+        Name(as input)  Old Value -> New Value (A,deg)  Change(A,deg)  Derivative (KJ/mol/A,deg)
+
+         bnd2(C12_C14)    1.50263 ->    1.50252        -0.00011       3.130318762E-04
+
+         bnd3(C11_C12)    1.39430 ->    1.39423        -0.00007      -5.924897771E-03
+     ang3(C11_C12_C14)  119.31674 ->  119.29955        -0.01719      -1.004647092E-05
+
+         bnd4(C10_C11)    1.39200 ->    1.39205         0.00005       4.785216358E-03
+     ang4(C10_C11_C12)  118.99589 ->  118.99990         0.00401       2.624373494E-04
+ dih4(C10_C11_C12_C14) -177.68338 -> -177.72578        -0.04240      -2.286565300E-05
+
+          bnd5(C9_C10)    1.39084 ->    1.39074        -0.00010       1.265049110E-02
+      ang5(C9_C10_C11)  120.68840 ->  120.67580        -0.01261       5.126814278E-04
+  dih5(C9_C10_C11_C12)   -0.14610 ->   -0.06245         0.08365      -2.973599093E-05
+
+           bnd6(C8_C9)    1.40042 ->    1.40055         0.00013       5.112113474E-03
+       ang6(C8_C9_C10)  120.26499 ->  120.27358         0.00859       5.270806708E-04
+   dih6(C8_C9_C10_C11)   -1.44557 ->   -1.43068         0.01490      -1.150336976E-05
+
+          bnd7(C13_C8)    1.39906 ->    1.39890        -0.00016      -5.822813000E-03
+       ang7(C13_C8_C9)  119.12537 ->  119.13053         0.00516       2.781332497E-04
+   dih7(C13_C8_C9_C10)    1.87013 ->    1.76356        -0.10657      -7.636893768E-06
+
+           bnd8(N1_C8)    1.40233 ->    1.40253         0.00020      -1.841293583E-03
+        ang8(N1_C8_C9)  122.15002 ->  122.11908        -0.03094       1.395644169E-05
+    dih8(N1_C8_C9_C10)  177.81000 ->  177.80828        -0.00172       2.687067299E-05
+
+           bnd9(C7_N1)    1.36942 ->    1.36948         0.00006       4.270220177E-04
+        ang9(C7_N1_C8)  127.58166 ->  127.59369         0.01203      -8.983391592E-06
+    *dih9(C7_N1_C8_C9)   45.46707 ->   45.46707         0.00000       6.571780737E-02
+
+          bnd10(C2_C7)    1.42452 ->    1.42447        -0.00005      -1.618803342E-03
+       ang10(C2_C7_N1)  120.60532 ->  120.61392         0.00859      -2.054553821E-05
+    dih10(C2_C7_N1_C8) -167.86403 -> -167.82736         0.03667      -1.002589227E-05
+
+          bnd11(C3_C2)    1.40558 ->    1.40559         0.00002       2.822803477E-03
+       ang11(C3_C2_C7)  119.64046 ->  119.64505         0.00458       1.565406836E-04
+    dih11(C3_C2_C7_N1) -179.88526 -> -179.75978         0.12548      -1.881052093E-05
+
+          bnd12(C4_C3)    1.38270 ->    1.38263        -0.00007       5.727955117E-03
+       ang12(C4_C3_C2)  121.57993 ->  121.57993         0.00000       2.540304112E-04
+    dih12(C4_C3_C2_C7)    0.38388 ->    0.30768        -0.07620      -3.905861322E-05
+
+          bnd13(C5_C4)    1.39966 ->    1.39968         0.00002       1.481943619E-03
+       ang13(C5_C4_C3)  118.65727 ->  118.65669        -0.00057       2.311077028E-04
+    dih13(C5_C4_C3_C2)    0.76662 ->    0.76834         0.00172      -3.712771637E-05
+
+          bnd14(C6_C5)    1.38324 ->    1.38318        -0.00006      -3.185960521E-03
+       ang14(C6_C5_C4)  121.20005 ->  121.20177         0.00172       9.871189485E-05
+    dih14(C6_C5_C4_C3)   -0.93106 ->   -0.89496         0.03610      -1.002975149E-05
+
+          bnd15(C1_C2)    1.46455 ->    1.46465         0.00011      -9.342672760E-04
+       ang15(C1_C2_C7)  120.67007 ->  120.68267         0.01261       2.305111897E-06
+   *dih15(C1_C2_C7_N1)   -0.70302 ->   -0.70302         0.00000      -4.814051441E-02
+
+          bnd16(O1_C1)    1.34757 ->    1.34754        -0.00003      -4.359842075E-04
+       ang16(O1_C1_C2)  114.07303 ->  114.07189        -0.00115       4.140174658E-06
+   *dih16(O1_C1_C2_C7)  175.72902 ->  175.72902         0.00000      -3.991515597E-02
+
+         bnd17(F3_C14)    1.35081 ->    1.35092         0.00010      -2.895514210E-04
+     ang17(F3_C14_C12)  111.60989 ->  111.59499        -0.01490      -3.825391518E-06
+ dih17(F3_C14_C12_C11)   82.64630 ->   82.64114        -0.00516      -9.951125307E-07
+
+         bnd18(F1_C14)    1.34690 ->    1.34685        -0.00005      -1.504151368E-06
+     ang18(F1_C14_C12)  111.96913 ->  111.96970         0.00057       3.078489482E-06
+*dih18(F1_C14_C12_C11)  -36.68534 ->  -36.68534         0.00000       5.472916594E-03
+
+         bnd19(F2_C14)    1.34543 ->    1.34538        -0.00005      -1.091262245E-04
+     ang19(F2_C14_C12)  112.40687 ->  112.40343        -0.00344       5.777804871E-06
+ dih19(F2_C14_C12_C11) -157.49120 -> -157.49750        -0.00630       1.680177274E-06
+
+          bnd20(O2_C1)    1.22592 ->    1.22587        -0.00005      -2.189293523E-04
+       ang20(O2_C1_C2)  125.78372 ->  125.80148         0.01776      -8.871675853E-06
+    dih20(O2_C1_C2_C7)   -4.19176 ->   -4.25937        -0.06761      -5.624974806E-06
+
+          bnd21(H1_O1)    0.97218 ->    0.97219         0.00001       5.740851633E-06
+      *ang21(H1_O1_C1)  105.48726 ->  105.48726         0.00000      -7.294734895E-02
+   *dih21(H1_O1_C1_C2)  179.13010 ->  179.13010         0.00000      -9.941889373E-03
+
+          bnd22(H2_C3)    1.08496 ->    1.08499         0.00003       2.369839924E-04
+       ang22(H2_C3_C2)  118.14275 ->  118.14848         0.00573       1.266669569E-06
+    dih22(H2_C3_C2_C7) -179.85374 -> -179.90646        -0.05271      -1.053533210E-06
+
+          bnd23(H3_C4)    1.08561 ->    1.08561         0.00001      -4.149363743E-05
+       ang23(H3_C4_C3)  120.56006 ->  120.55891        -0.00115      -1.796978344E-06
+    dih23(H3_C4_C3_C2) -179.99584 -> -180.01532        -0.01948      -1.003388716E-06
+
+          bnd24(H4_C5)    1.08747 ->    1.08747         0.00000      -1.410468884E-04
+       ang24(H4_C5_C4)  119.91949 ->  119.91606        -0.00344      -1.397279486E-06
+    dih24(H4_C5_C4_C3)  178.40130 ->  178.42421         0.02292       6.159245125E-07
+
+          bnd25(H5_C6)    1.08505 ->    1.08501        -0.00004      -2.072916221E-04
+       ang25(H5_C6_C5)  119.78542 ->  119.77969        -0.00573      -3.431211665E-06
+    dih25(H5_C6_C5_C4)  178.36978 ->  178.33254        -0.03724       3.979843675E-07
+
+          bnd26(H6_N1)    1.01831 ->    1.01819        -0.00012      -5.582007021E-04
+      *ang26(H6_N1_C8)  116.91662 ->  116.91662         0.00000      -2.042495982E-01
+   *dih26(H6_N1_C8_C9) -128.98712 -> -128.98712         0.00000       7.928813319E-02
+
+          bnd27(H7_C9)    1.08625 ->    1.08624        -0.00001       1.977431634E-04
+      ang27(H7_C9_C10)  120.21514 ->  120.23061         0.01547       2.687121816E-06
+  dih27(H7_C9_C10_C11)  177.88334 ->  177.84610        -0.03724      -9.140370161E-07
+
+         bnd28(H8_C10)    1.08665 ->    1.08667         0.00001      -1.864378362E-05
+     ang28(H8_C10_C11)  119.76938 ->  119.76422        -0.00516       1.097318311E-06
+ dih28(H8_C10_C11_C12)  178.74507 ->  178.85107         0.10600      -1.516672752E-06
+
+         bnd29(H9_C11)    1.08553 ->    1.08554         0.00001      -1.338729206E-04
+     ang29(H9_C11_C12)  120.35322 ->  120.35322         0.00000       7.595117749E-06
+ dih29(H9_C11_C12_C14)    1.94118 ->    2.03572         0.09454       1.270812555E-06
+
+        bnd30(H10_C13)    1.08598 ->    1.08598         0.00000       3.556446629E-04
+     ang30(H10_C13_C8)  119.44680 ->  119.46457         0.01776      -1.488491909E-05
+  dih30(H10_C13_C8_C9) -179.83369 -> -179.77296         0.06073       2.280971482E-06
+
+Adding the expansion point to the intramolecular database: 
+/home/dcase/FlufenamicAcid/PBE0correctIntra.dbase
+The expansion point is added as the new ENTRY   6021
+Adding the enantiomer of the expansion point to the intramolecular database: 
+/home/dcase/FlufenamicAcid/PBE0correctIntra.dbase
+The enantiomer of the expansion point is added as the new ENTRY   6022
+ 
+
+Computing and localising atomic multipole moments for molecule   1
+The electrostatic LAM database will now be searched for suitable entries
+The position of torsion  dih6 corresponds to the position of bnd7 in the electrostatic LAM database   5833
+Check the compatibility of the electrostatic LAM database with internal record. Exiting.

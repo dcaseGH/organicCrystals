@@ -1,0 +1,3 @@
+from cspTracking import Attribute, SetCSPStructures
+len(tempSet.subsetStructures([Attribute(pointer   = {'crystalOptimiserData': 'rhoFinal'},
+                                        minValue  = 0.)]))

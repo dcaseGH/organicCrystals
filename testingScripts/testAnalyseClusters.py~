@@ -1,0 +1,152 @@
+import numpy as np
+import unittest
+import os
+
+groupLabels = {'MFA': {'ringA': [1,2,3,4,5,6,19,20,21,22],
+                       'ringB': [7,8,9,10,11,12,24,25,26],
+                       'ortho': [14,30,31,32],
+                       'meta' : [13,27,28,29],
+                       'NH'   : [15,23],
+                       'COOH' : [0,16,17,18]}
+               }
+
+
+class AnalyseClusters(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+
+    def test_rdkitIO(self):
+        from analyseClusters import rdKitToASE, aseToRDKit
+        from ase.io import read as ASERead
+
+        struct = ASERead('CSPPCM_example.cif')
+        #check that files can be converted and order maintained --- DECIMALS IS COMPLETELY RUBBISH!!!! (open babel??)
+        newStruct = rdKitToASE(aseToRDKit(struct))
+        np.testing.assert_array_almost_equal(np.array([x.position for x in struct]),
+                                             np.array([x.position for x in newStruct]),
+                                             decimal=2)
+    def test_readCIFAndManipulate(self):
+        #check can split up a 'molecule' into molecules
+        from analyseClusters import getSpeciesListCIF
+
+#        structs = ASERead('CSPPCM_example.cif', index=':') #old way - dont do this
+        structures = list(getSpeciesListCIF('CSPPCM_example.cif'))
+
+        self.assertEqual(len(structures),
+                         7)
+        from analyseClusters import splitASEAtomsToMols
+#        self.assertEqual(len(structures[-2]),
+#                         66)
+#        self.assertEqual([len(x) for x in splitASEAtomsToMols(structures[-2])],
+#                         [33, 33])
+        #still havent sorted the pdb stuff
+#        from ase.io import write as ASEWrite
+#        from analyseClusters import atomsToPDB
+#        with open('tempABD.pdb', 'w') as outf:
+#            atomsToPDB(outf, structures[-2])
+#        ASEWrite('tempabc.pdb', structures[-2], format='proteindatabank')
+#        ASEWrite('tempabc.xyz', structures[-2])
+
+    def test_csdTracker(self):
+#        from ase.io import read as ASERead
+        from analyseClusters import getSpeciesListCIF
+        from analyseClusters import SetASEStructures
+#        setStructures =  SetASEStructures(ASERead('CSPPCM_example.cif', 
+#                                                  index=':'),
+        setStructures =  SetASEStructures('CSPPCM_example.cif', 
+                                          [1, 0 ,2], [6, 15, 7, 8], groupLabels = groupLabels['MFA'])
+        self.assertEqual(len(setStructures.structures),
+                         7)
+        self.assertEqual(len(setStructures.structures[-2]['crystal'].asymmetricMolecules),
+                         2)
+        self.assertEqual(setStructures.structures[-2]['zPrime'],
+                         2)
+
+
+
+    def test_Crystal(self):
+        ''' Make a Crystal and check some stuff '''
+        from analyseClusters import getSpeciesListCIF, Crystal, splitASEAtomsToMols
+        structures = list(getSpeciesListCIF('CSPPCM_example.cif'))
+
+        #take the z'=2 one
+        myCrystal = Crystal(splitASEAtomsToMols(structures[-2]))
+
+        self.assertEqual(len(myCrystal.asymmetricMolecules),
+                         2)
+        self.assertEqual(len(myCrystal.asymmetricMolecules[-1].aseAtoms),
+                         33)
+
+        myCrystal.generateNeighbouringAtoms(nMolecules = 16)
+        self.assertEqual(len(myCrystal.asymmetricMolecules[0].listNeighbours),
+                         16)
+        self.assertEqual(len(myCrystal.asymmetricMolecules[1].listNeighbours),
+                         16)
+
+        myCrystal.calculateClusterInformation([1, 0 ,2], [6, 15, 7, 8], groupLabels = groupLabels['MFA'])
+        self.assertEqual(myCrystal.asymmetricMolecules[1].environment['v(com)'].shape,
+                         (16, 3))
+        self.assertEqual(myCrystal.asymmetricMolecules[0].environment['r(com)'].shape,
+                         (16,))
+
+    def test_stuffForThreeDGraphs(self):
+        ''' Make sure can get lists of com vectors etc  '''
+        from analyseClusters import SetASEStructures
+        setStructures = SetASEStructures('CSPPCM_example.cif', 
+                                         [1, 0 ,2], [6, 15, 7, 8], groupLabels = groupLabels['MFA'])
+
+        setsOfPoints  = setStructures.separateClusterInfo()
+        self.assertEqual(len(setsOfPoints),
+                         8)
+        #should sort out issue of axisRot projections...
+        self.assertTrue('axisRot' in setsOfPoints[0][0].keys())
+
+class TestCrystal(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+
+    def test_readingCIFs(self):
+        from analyseClusters import Crystal
+        #arbitrarily divide in 2 parts
+        myCrystal = Crystal.fromZp1Cif('mfa_tfa_tfa_pcm_f16_translated.cif', nAtomsPerMol=15)
+        self.assertEqual([len(m.aseAtoms) for m in myCrystal.asymmetricMolecules],
+                         [15,15])
+
+class TestMolecule(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+
+    def test_indicesAcidicHydrogens(self):
+        from analyseClusters import Crystal
+
+        myCrystal = Crystal.fromZp1Cif('mfa_tfa_tfa_pcm_f16_translated.cif')
+        self.assertTrue(myCrystal.asymmetricMolecules[0].indicesAcidicHydrogens() == [18, 23])
+
+
+class TestResetingCell(unittest.TestCase):
+    def test_changingCellParams(self):
+        from analyseClusters import latticeParameters, Crystal
+
+        myCrystal = Crystal.fromZp1Cif('expStructuresTFA.cif')
+        np.testing.assert_array_almost_equal(np.array(latticeParameters(myCrystal.aseCell)),
+                                             np.array([6.9136, 7.2915, 14.1096, 78.1106, 80.0763, 64.8556]))
+
+        #swap (a,b,c) -> (c,a,b)
+        np.testing.assert_array_almost_equal(latticeParameters(np.dot(np.array([[0., 0., 1.],
+                                                                                [1., 0., 0.],
+                                                                                [0., 1., 0.]]),
+                                                                      myCrystal.aseCell)),
+                                             np.array([14.1096, 6.9136, 7.2915, 64.8556, 78.1106, 80.0763]))
+
+        newCrystal = myCrystal.clone(np.array([[0., 0., 1.],
+                                               [1., 0., 0.],
+                                               [0., 1., 0.]]))
+        np.testing.assert_array_almost_equal(latticeParameters(newCrystal.aseCell),
+                                             np.array([14.1096, 6.9136, 7.2915, 64.8556, 78.1106, 80.0763]))
+
+
+if __name__ == '__main__':
+    unittest.main()

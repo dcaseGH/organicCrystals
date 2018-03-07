@@ -1,0 +1,20 @@
+from cspTracking import SetCSPStructures, CSPStructure 
+
+failTracker = CSPStructure(1999,
+                           initCrystalOptimiserData = '/home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/unique_pool/1999-1/summary.out')
+
+print failTracker.getAttribute('crystalOptimiserComplete'),\
+      failTracker.getAttribute('crystalOptimiserError')
+#exit()
+crysOptPool  = '/home/dcase/FlufenamicAcid/CrystalPredictorFullRun/cryOpt/unique_pool/'
+crysPredPool = '/home/dcase/FlufenamicAcid/CrystalPredictorFullRun/unique_pool/'
+
+cspDataFFA = SetCSPStructures.initFromCrystalPredictorLog(crysPredPool.replace('unique_pool/', '') + 'Analyse_edited.log',
+                                                          crystalOptimiserSummaryPointer = (crysOptPool + '*-1/summary.out'))
+#exit()
+for i in range(1999,2000):
+    try:
+        print cspDataFFA.structures[i].getAttribute('crystalOptimiserComplete'),\
+              cspDataFFA.structures[i].getAttribute('crystalOptimiserError')
+    except:
+        print 'error', i
